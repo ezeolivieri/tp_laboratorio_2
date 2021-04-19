@@ -10,6 +10,13 @@ namespace Entidades
     {
         #region Metodos
 
+        /// <summary>
+        ///     Ejecutar la operacion dada como "operador" entre "num1" y "num2"
+        /// </summary>
+        /// <param name="num1">Operador de tipo Numero</param>
+        /// <param name="num2">Operador de tipo Numero</param>
+        /// <param name="operador">La operacion a ejecutar</param>
+        /// <returns>Retorna un double como resultado</returns>
         public static double Operar(Numero num1, Numero num2, string operador)
         {
             double resultado = 0;
@@ -34,6 +41,11 @@ namespace Entidades
             return resultado;
         }
 
+        /// <summary>
+        ///     Valida el operador y lo retorna en un string. De no ser correcto, se retorna "+".
+        /// </summary>
+        /// <param name="operador">Char que representa una operacion matematica</param>
+        /// <returns>Retorna un string con el operador validado</returns>
         private static string ValidarOperador(char operador)
         {
             string retorno;

@@ -15,11 +15,19 @@ namespace MiCalculadora
 {
     public partial class FormCalculadora : Form
     {
+        /// <summary>
+        ///     Constructor de FormCalculadora
+        /// </summary>
         public FormCalculadora()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        ///     Método para manejar el click en btnCerrar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             if( MessageBox.Show("Está seguro que desea salir?", 
@@ -31,6 +39,11 @@ namespace MiCalculadora
             }
         }
 
+        /// <summary>
+        ///     Método para manejar el click en btnConvertirABinario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnConvertirABinario_Click(object sender, EventArgs e)
         {
             string resultado = this.lblResultado.Text;
@@ -50,6 +63,11 @@ namespace MiCalculadora
             }
         }
 
+        /// <summary>
+        ///     Método para manejar el click en btnConvertirADecimal
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnConvertirADecimal_Click(object sender, EventArgs e)
         {
             string resultado = this.lblResultado.Text;
@@ -69,11 +87,21 @@ namespace MiCalculadora
             }
         }
 
+        /// <summary>
+        ///     Método para manejar el click en btnLimpiar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             Limpiar();
         }
 
+        /// <summary>
+        ///     Método para manejar el click en btnOperar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnOperar_Click(object sender, EventArgs e)
         {
             string nro1 = this.txtNumero1.Text;
@@ -95,6 +123,9 @@ namespace MiCalculadora
 
         }
 
+        /// <summary>
+        ///     Método para vaciar tanto los TextBoxes como el Label y el ComboBox
+        /// </summary>
         private void Limpiar()
         {
             this.txtNumero1.Text = "";
@@ -103,6 +134,13 @@ namespace MiCalculadora
             this.cmbOperador.Text = "";
         }
 
+        /// <summary>
+        ///     Método que dado dos numeros realiza una operacion matematica
+        /// </summary>
+        /// <param name="numero1">Operador de tipo string</param>
+        /// <param name="numero2">Operador de tipo string</param>
+        /// <param name="operador">Operacion matematica de tipo string</param>
+        /// <returns>Retorna un double con el resultado de una operacion matematica</returns>
         private static double Operar(string numero1, string numero2, string operador)
         {
             Numero num1 = new Numero(numero1);

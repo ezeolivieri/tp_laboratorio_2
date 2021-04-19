@@ -12,40 +12,51 @@ namespace Entidades
 
         #region Constructores
 
+        /// <summary>
+        ///     Constructor por defecto, asigna 0 a la propiedad numero
+        /// </summary>
         public Numero()
         {
             this.numero = 0;
         }
 
+        /// <summary>
+        ///     Constructor que dado un double, lo asigna a la propiedad numero
+        /// </summary>
+        /// <param name="numero">Número de tipo double</param>
         public Numero(double numero)
         {
             this.numero = numero;
         }
 
+        /// <summary>
+        ///     Constructor que dado un string, lo asigna a la propiedad numero 
+        ///     (de no ser posible el parseo le asigna 0).
+        /// </summary>
+        /// <param name="strNumero">dato de tipo string</param>
         public Numero(string strNumero)
         {
-            double nro = 0;
-
-            if( double.TryParse(strNumero, out nro) )
-            {
-                nro = double.Parse(strNumero);
-                this.numero = nro;
-            }
-            else
-            {
-                this.numero = nro;
-            }
+            SetNumero(strNumero);
         }
 
         #endregion
 
         #region Metodos
 
+        /// <summary>
+        ///     Setter de la propiedad numero
+        /// </summary>
+        /// <param name="strNumero">Dato de tipo string</param>
         public void SetNumero(string strNumero)
         {
             this.numero = ValidarNumero(strNumero);
         }
 
+        /// <summary>
+        ///     Método que convierte un numero binario a decimal.
+        /// </summary>
+        /// <param name="binario">Número binario de tipo string</param>
+        /// <returns>Retorna un string con la conversión realizada a decimal.</returns>
         public string BinarioDecimal(string binario)
         {
             string retorno = "Valor invalido";
@@ -53,15 +64,17 @@ namespace Entidades
 
             if( EsBinario(binario) )
             {
+                // Invierto el binario recibido
                 string binarioInvertido = "";
                 foreach (char nro in binario)
                 {
                     binarioInvertido = nro + binarioInvertido;
                 }
 
-
+                // Recorro el binario invertido
                 for (int i = 0; i < binarioInvertido.Length; i++)
                 {
+                    // Si encuentro un uno, lo resuelvo
                     if (binarioInvertido[i] == '1')
                     {
                         resultado += Math.Pow(2, i);
@@ -74,6 +87,11 @@ namespace Entidades
             return retorno;
         }
 
+        /// <summary>
+        ///     Método que convierte un numero decimal a numero binario
+        /// </summary>
+        /// <param name="numero">Número de tipo double</param>
+        /// <returns>Retorna un string con la conversión realizada a binario.</returns>
         public string DecimalBinario(double numero)
         {
             string retorno = "Valor invalido";
@@ -101,6 +119,7 @@ namespace Entidades
             cadenaBinaria.Append(resto.ToString());
             retorno = cadenaBinaria.ToString();
 
+            // Invierto la cadena formada
             string binarioInvertido = "";
             foreach (char nro in retorno)
             {
@@ -111,6 +130,11 @@ namespace Entidades
             return retorno;
         }
 
+        /// <summary>
+        ///     Método que convierte un numero decimal a numero binario
+        /// </summary>
+        /// <param name="numero">Número de tipo string</param>
+        /// <returns>Retorna un string con la conversión realizada a binario.</returns>
         public string DecimalBinario(string numero)
         {
             string retorno = "Valor invalido";
@@ -125,6 +149,11 @@ namespace Entidades
             return retorno;
         }
 
+        /// <summary>
+        ///     Método que evalúa si el string recibido representa un numero binario
+        /// </summary>
+        /// <param name="binario">Número de tipo string</param>
+        /// <returns>Retorna true si "binario" es un numero binario o false en caso contrario</returns>
         private bool EsBinario(string binario)
         {
             bool esNroBinario = true;
@@ -141,6 +170,14 @@ namespace Entidades
             return esNroBinario;
         }
 
+        /// <summary>
+        ///     Método para validar que el string recibido sea un número
+        /// </summary>
+        /// <param name="strNumero">Dato de tipo string</param>
+        /// <returns>
+        ///     Retorna un double resultante del parseo de "strNumero" 
+        ///     (en caso de no poder parsear, se retorna 0).
+        /// </returns>
         private double ValidarNumero(string strNumero)
         {
             double resultado = 0;
